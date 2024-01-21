@@ -23,7 +23,7 @@ poetry run python image_transformation.app
 ```
 
 ### `cURL`ing the API
-The API can be accessed on `localhost:8080` once running. 
+The API can be accessed on `localhost:8080` once running. An OpenAPI specification of the API is available at `/openapi.json` for import into e.g. [Insomnia](https://insomnia.rest/) or [Postman](https://www.postman.com/).
 
 Examples of `cURL`ing the API can be seen below. 
 
