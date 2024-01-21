@@ -24,30 +24,30 @@ def test_center_crops_all_known_good_images():
             center_crop(img, 100, 100)
 
 
-def test_throws_on_negative_cropping_dimensions():
+def test_center_cropping_raises_on_negative_cropping_dimensions():
     with pytest.raises(ValueError):
         with WandImage(filename=os.path.join(images, "image0.jpeg")) as img:
             center_crop(img, -100, -100)
 
 
-def test_supports_empty_cropping_dimensions():
+def test_center_cropping_supports_empty_cropping_dimensions():
     with pytest.raises(ValueError):
         with WandImage(filename=os.path.join(images, "image0.jpeg")) as img:
             center_crop(img, 0, 0)
 
 
-def test_supports_large_cropping_dimensions():
+def test_center_cropping_supports_large_cropping_dimensions():
     with WandImage(filename=os.path.join(images, "image0.jpeg")) as img:
         center_crop(img, sys.maxsize, sys.maxsize)
 
 
-def test_supports_large_thresholds():
+def test_supports_differencing_with_large_thresholds():
     with WandImage(filename=os.path.join(images, "image0.jpeg")) as base:
         with WandImage(filename=os.path.join(images, "image0.jpeg")) as diff:
             difference(base, diff, float(sys.maxsize))
 
 
-def test_does_not_support_negative_thresholds():
+def test_differencing_does_not_support_negative_thresholds():
     with WandImage(filename=os.path.join(images, "image0.jpeg")) as base:
         with WandImage(filename=os.path.join(images, "image0.jpeg")) as diff:
             difference(base, diff, -2)

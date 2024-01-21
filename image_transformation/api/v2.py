@@ -5,7 +5,7 @@ from image_transformation.models import (
     DifferenceRequest,
     ImageHashRequest,
 )
-from image_transformation.transformation import (
+from image_transformation.request_handlers import (
     base64_center_crop,
     base64_difference,
     base64_hash,
