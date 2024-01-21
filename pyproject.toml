@@ -4,11 +4,19 @@ version = "0.1.0"
 description = "A small Python API for transforming images"
 authors = ["Anders Fischer-Nielsen <andersfischern@me.com>"]
 readme = "README.md"
-packages = [{include = "image-transformation"}]
+packages = [{include = "image_transformation"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
+pydantic = "^2.5.3"
+fastapi = "^0.109.0"
+uvicorn = "^0.26.0"
+python-dotenv = "^1.0.0"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.1.14"
+mypy = "^1.8.0"
 
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core>=1.7.1"]
 build-backend = "poetry.core.masonry.api"
