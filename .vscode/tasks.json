@@ -1,0 +1,37 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "poetry:init",
+      "command": "poetry",
+      "args": ["shell"],
+      "type": "shell"
+    },
+    {
+      "label": "compose:up",
+      "command": "docker-compose",
+      "args": ["up", "--build", "-d", "--wait"],
+      "type": "shell",
+      "presentation": {
+        "echo": false,
+        "reveal": "silent",
+        "panel": "shared",
+        "showReuseMessage": false,
+        "clear": true
+      }
+    },
+    {
+      "label": "compose:down",
+      "command": "docker-compose",
+      "args": ["down"],
+      "type": "shell",
+      "presentation": {
+        "echo": false,
+        "reveal": "silent",
+        "panel": "shared",
+        "showReuseMessage": false,
+        "clear": true
+      }
+    }
+  ]
+}

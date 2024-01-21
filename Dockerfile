@@ -10,7 +10,11 @@ RUN pip install poetry==1.7.1
 
 COPY poetry.lock pyproject.toml ./
 
-RUN poetry install --no-dev --no-root --no-ansi --no-interaction
+RUN poetry install --no-dev --no-root --no-ansi --no-interaction;
+
+ARG IS_DEBUG=0
+RUN if [ "$IS_DEBUG" = "1" ]; then poetry add debugpy; fi
+
 RUN rm -rf $POETRY_CACHE_DIR
 
 # --- RELEASE IMAGE ---
@@ -28,6 +32,10 @@ COPY --from=build_image $VIRTUAL_ENV $VIRTUAL_ENV
 
 COPY image_transformation ./image_transformation
 
+RUN apt-get update && apt-get install -y \
+  imagemagick \
+  && rm -rf /var/lib/apt/lists/*
+
 EXPOSE 8080
 
-CMD ["python", "-m", "image_transformation.api"]
+CMD ["python", "-m", "image_transformation.app"]

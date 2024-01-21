@@ -1,0 +1,38 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run: Tests",
+      "type": "python",
+      "request": "launch",
+      "module": "pytest",
+      "justMyCode": true
+    },
+    {
+      "name": "Run: Container",
+      "type": "python",
+      "request": "attach",
+      "connect": {
+        "host": "localhost",
+        "port": 5678
+      },
+      "pathMappings": [
+        {
+          "localRoot": "${workspaceFolder}",
+          "remoteRoot": "."
+        }
+      ],
+      "justMyCode": false,
+      "preLaunchTask": "compose:up",
+      "postDebugTask": "compose:down"
+    },
+    {
+      "name": "Run: Local",
+      "type": "python",
+      "request": "launch",
+      "console": "integratedTerminal",
+      "module": "image_transformation.app",
+      "justMyCode": false,
+    }
+  ]
+}

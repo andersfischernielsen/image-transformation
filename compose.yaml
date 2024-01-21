@@ -1,0 +1,23 @@
+services:
+  api:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      args:
+      # This enables installing the debugpy library in the container to allow debugging the code running in the container.
+      # Set this to '0' to disable the debugger.
+        - IS_DEBUG=1
+    restart: always
+    expose:
+      - 8080
+      - 5678
+    networks:
+      - api-network
+    ports:
+      - 8080:8080
+      - 5678:5678
+    command: python -m debugpy --listen 0.0.0.0:5678 -m image_transformation.app
+
+networks:
+  api-network:
+    driver: bridge
