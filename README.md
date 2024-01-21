@@ -4,6 +4,25 @@ A small Python API for transforming images.
 ## Running the project
 The project assumes that either a container runtime (Docker, OrbStack, etc.) or a Python/[Poetry](https://python-poetry.org/docs/#installation) runtime is available on the system. If a Python/Poetry runtime is used, an installation of [ImageMagick](https://formulae.brew.sh/formula/imagemagick) is also expected to be present on the system.
 
+
+### Running via `docker compose`
+```sh
+docker compose up
+```
+
+### Running via `docker`
+```sh
+docker build -t image-transformation .
+docker run image-transformation -p 8080:8080
+```
+
+### Running via `poetry`
+```sh 
+poetry install
+poetry run python image_transformation.app
+```
+
+### `cURL`ing the API
 The API can be accessed on `localhost:8080` once running. 
 
 Examples of `cURL`ing the API can be seen below. 
@@ -37,23 +56,6 @@ curl --request POST \
 }'
 </pre>
 </details>
-
-### `docker compose`
-```sh
-docker compose up
-```
-
-### `docker`
-```sh
-docker build -t image-transformation .
-docker run image-transformation -p 8080:8080
-```
-
-### `poetry`
-```sh 
-poetry install
-poetry run python image_transformation.app
-```
 
 ## Implementation details
 
